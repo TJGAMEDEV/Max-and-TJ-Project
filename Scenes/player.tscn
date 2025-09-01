@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dn3mmjcwon82p"]
+
+[ext_resource type="Script" path="res://Scenes/State_machine.gd" id="1_pqvek"]
+[ext_resource type="Script" path="res://Scenes/Player.gd" id="1_yl225"]
+[ext_resource type="Script" path="res://Scenes/Idle.gd" id="2_wp40b"]
+[ext_resource type="Script" path="res://Scenes/Run.gd" id="3_46dat"]
+[ext_resource type="Script" path="res://Scenes/Attack.gd" id="4_763m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouuwt"]
+size = Vector2(16, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qv46e"]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_yl225")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0176439, -0.0958099)
+shape = SubResource("RectangleShape2D_ouuwt")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-0.0245814, 0.0472517)
+scale = Vector2(-15.9508, 16.0945)
+mesh = SubResource("BoxMesh_qv46e")
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("1_pqvek")
+
+[node name="Idle" type="Node" parent="State Machine"]
+script = ExtResource("2_wp40b")
+
+[node name="Run" type="Node" parent="State Machine"]
+script = ExtResource("3_46dat")
+
+[node name="Attack" type="Node" parent="State Machine"]
+script = ExtResource("4_763m6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

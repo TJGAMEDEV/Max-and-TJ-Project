@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://biw68bxsv7jeg"]
+
+[ext_resource type="PackedScene" uid="uid://dn3mmjcwon82p" path="res://Scenes/player.tscn" id="1_fnpjr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ml640"]
+
+[node name="Test_scene" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_fnpjr")]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(74, 56)
+scale = Vector2(97.5, 48.5)
+mesh = SubResource("BoxMesh_ml640")
